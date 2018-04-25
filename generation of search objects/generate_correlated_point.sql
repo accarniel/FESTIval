@@ -1,4 +1,4 @@
---this function generates spatial points (i.e., geometry objects) that intersects at least one spatial object stored in the target_table.target_table_geo
+--this function generates spatial points (i.e., geometry objects) that intersects in at least one spatial object stored in the target_table.target_table_geo
 CREATE OR REPLACE FUNCTION generate_correlated_point(base_region geometry, target_table text, target_table_geo text, num integer)
   RETURNS boolean AS 
   $BODY$
@@ -24,6 +24,7 @@ BEGIN
 				USING random_id;
 
 			--does the generated point inside our base region?
+			--note that the base region might not necessarily contain spatial objects in the target table
 			IF (ST_Contains(base_region, generated_point) = '1') THEN
 				is_valid := true;
 			END IF;
