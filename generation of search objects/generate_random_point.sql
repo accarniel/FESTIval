@@ -1,3 +1,4 @@
+--this function generates points that are inside the base_region object
 CREATE OR REPLACE FUNCTION generate_random_point(base_region geometry, num integer, ds text default 'ALL')
   RETURNS boolean AS 
   $BODY$
