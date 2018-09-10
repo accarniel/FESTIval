@@ -18,8 +18,8 @@ FESTIval is implemented in C using the extensibility provided by the PostgreSQL'
 
 Currently, FESTIval allows us to:
 
-* evaluate disk-based spatial indices (i.e., indices for magnetic disks), such as the R-tree [1].
-* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the FOR-tree [2], FAST-based indices [3], and eFIND-based indices [4].
+* evaluate disk-based spatial indices (i.e., indices for magnetic disks), such as the [R-tree](https://dl.acm.org/citation.cfm?id=602266).
+* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16).
 * specify and execute user-defined workloads by using a unique environment.
 * access an integrated data schema that stores index configurations and statistical data of executed workloads.
 * use any spatial dataset in experiments.
@@ -27,13 +27,13 @@ Currently, FESTIval allows us to:
 
 FESTIval manages a schema in the PostgreSQL called *fds*. This schema is automatically created by the FESTIval when the CREATE EXTENSION command is executed in a database. By using this schema, it is possible to collect and compare statistical data of different indices and analysis their results.
 
-## How to Install FESTIval?
+## How to Install and Use FESTIval?
 
-Please, access our detailed documentation [here](https://github.com/accarniel/FESTIval/wiki), which provides the step-by-step to perform the installation of FESTIval. 
+Please, access our detailed documentation [here](https://github.com/accarniel/FESTIval/wiki), which provides the step-by-step to perform the installation of FESTIval. It also includes several examples of examples together with a full description of the SQL operations of FESTIval.
 
 ### Acknowledgments
 
-This project is supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil. FESTIval is fully mantained and developed by Anderson Chaves Carniel. Supervisor: Prof. Dr. Cristina Dutra de Aguiar Ciferri. Collaborator: Prof. Dr. Ricardo Rodrigues Ciferri.
+This project is supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil. FESTIval is mantained and developed by Anderson Chaves Carniel. Supervisor: Prof. Dr. Cristina Dutra de Aguiar Ciferri. Collaborator: Prof. Dr. Ricardo Rodrigues Ciferri.
 
 Research conducted at the University of São Paulo in Brazil
 
