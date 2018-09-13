@@ -15,6 +15,9 @@ pages:
     - Publications: pub/publication.md
     - License: license/License.md
 repo_url: https://github.com/accarniel/FESTIval
+markdown_extensions:
+    - toc:
+        separator: "_"
 theme: 
   name: 'material'
   palette:
