@@ -1,12 +1,3 @@
----
-title: My Document
-summary: A brief description of my document.
-authors:
-    - Waylan Limberg
-    - Tom Christie
-date: 2018-07-10
----
-
 # FESTIval
 
 FESTIval is a framework, implemented as a PostgreSQL extension, for conducting experimental evaluations of spatial indices. The complete documentation of FESTIval is available [here](https://github.com/accarniel/FESTIval/wiki). We are currently working on to make FESTIval publicly available. Feel free to see how FESTIval is useful by accessing the [publications employing FESTIval](https://github.com/accarniel/FESTIval/wiki/Publications).
