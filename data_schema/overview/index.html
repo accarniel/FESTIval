@@ -1,0 +1,976 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A PostgreSQL extension for conducting experimental evaluations of spatial indices">
+      
+      
+        <link rel="canonical" href="https://accarniel.github.io/FESTIval/data_schema/overview/">
+      
+      
+        <meta name="author" content="Anderson Chaves Carniel">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Quick start - FESTIval</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#03a9f4">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../css/index.css">
+    
+      <link rel="stylesheet" href="../../css/colors.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#an_overview_of_the_festivals_data_schema_-_fds" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://accarniel.github.io/FESTIval" title="FESTIval" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                FESTIval
+              </span>
+              <span class="md-header-nav__topic">
+                Quick start
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/accarniel/FESTIval" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      accarniel/FESTIval
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://accarniel.github.io/FESTIval" title="FESTIval" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    FESTIval
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/accarniel/FESTIval" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      accarniel/FESTIval
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" title="Download and Install" class="md-nav__link">
+      Download and Install
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Data Schema
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data Schema
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Quick start
+      </label>
+    
+    <a href="./" title="Quick start" class="md-nav__link md-nav__link--active">
+      Quick start
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration_of_a_spatial_index" title="Configuration of a Spatial Index" class="md-nav__link">
+    Configuration of a Spatial Index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical_data_of_executed_workloads" title="Statistical Data of Executed Workloads" class="md-nav__link">
+    Statistical Data of Executed Workloads
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../spec/" title="Specifications" class="md-nav__link">
+      Specifications
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Operations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Operations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/overview/" title="Quick start" class="md-nav__link">
+      Quick start
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      General operations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        General operations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_createemptyspatialindex/" title="FT_CreateEmptySpatialIndex" class="md-nav__link">
+      FT_CreateEmptySpatialIndex
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_insert/" title="FT_Insert" class="md-nav__link">
+      FT_Insert
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_delete/" title="FT_Delete" class="md-nav__link">
+      FT_Delete
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_update/" title="FT_Update" class="md-nav__link">
+      FT_Update
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_queryspatialindex/" title="FT_QuerySpatialIndex" class="md-nav__link">
+      FT_QuerySpatialIndex
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_applyallmodificationsforfai/" title="FT_ApplyAllModificationsForFAI" class="md-nav__link">
+      FT_ApplyAllModificationsForFAI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_applyallmodificationsfrombuffer/" title="FT_ApplyAllModificationsFromBuffer" class="md-nav__link">
+      FT_ApplyAllModificationsFromBuffer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Auxiliary operations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Auxiliary operations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_startcollectstatistics/" title="FT_StartCollectStatistics" class="md-nav__link">
+      FT_StartCollectStatistics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_collectorderofreadwrite/" title="FT_CollectOrderOfReadWrite" class="md-nav__link">
+      FT_CollectOrderOfReadWrite
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_storestatisticaldata/" title="FT_StoreStatisticalData" class="md-nav__link">
+      FT_StoreStatisticalData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_storeindexsnapshot/" title="FT_StoreIndexSnapshot" class="md-nav__link">
+      FT_StoreIndexSnapshot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_setexecutionname/" title="FT_SetExecutionName" class="md-nav__link">
+      FT_SetExecutionName
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Atomic operations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        Atomic operations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_ainsert/" title="FT_AInsert" class="md-nav__link">
+      FT_AInsert
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_adelete/" title="FT_ADelete" class="md-nav__link">
+      FT_ADelete
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_aupdate/" title="FT_AUpdate" class="md-nav__link">
+      FT_AUpdate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../operations/ft_aqueryspatialindex/" title="FT_AQuerySpatialIndex" class="md-nav__link">
+      FT_AQuerySpatialIndex
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Creating and Executing Workloads
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Creating and Executing Workloads
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../workloads/overview/" title="Quick start" class="md-nav__link">
+      Quick start
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Examples
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../workloads/ft_createspatialindex/" title="FT_CreateSpatialIndex" class="md-nav__link">
+      FT_CreateSpatialIndex
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contact/" title="Contact" class="md-nav__link">
+      Contact
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../publications/" title="Publications" class="md-nav__link">
+      Publications
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration_of_a_spatial_index" title="Configuration of a Spatial Index" class="md-nav__link">
+    Configuration of a Spatial Index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical_data_of_executed_workloads" title="Statistical Data of Executed Workloads" class="md-nav__link">
+    Statistical Data of Executed Workloads
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="an_overview_of_the_festivals_data_schema_-_fds">An Overview of the FESTIval's data schema - <span class="function"><em>fds</em></span><a class="headerlink" href="#an_overview_of_the_festivals_data_schema_-_fds" title="Permanent link">#</a></h1>
+<p>The FESTIval's data schema stores information of spatial datasets that can be used by spatial indices, general and specific parameters employed by spatial indices, and statistical data of executed workloads. Collected statistical data can be used in mathematical models to measure the performance of spatial indices, considering employed parameter values, characteristics of the spatial dataset, and the employed storage device.</p>
+<p>The figure below provides the logical view of the FESTIval's data schema, called <span class="function"><em>fds</em></span>. This figure only shows the relationships of the relational tables by showing their primary and foreign keys. Primary keys are highlighted. The relationship between two tables are given by a directed row linking the primary key of a table to the foreign key of another table. </p>
+<p><img alt="The logical view of the FESTIval's data schema" src="../../data_schema.png" title="The logical view of the FESTIval's data schema" /></p>
+<p>There are two categories of data managed by FESTIval: (i) <a href="../overview/#configuration_of_a_spatial_index">configuration of a spatial index</a>, and (ii) <a href="../overview/#statistical_data_of_executed_workloads">statistical data of executed workloads</a>. </p>
+<h2 id="configuration_of_a_spatial_index">Configuration of a Spatial Index<a class="headerlink" href="#configuration_of_a_spatial_index" title="Permanent link">#</a></h2>
+<p>The configuration of a spatial index consists of four components. Each component is shortly described below and is represented by a relational table (see the specification of a relational table by clicking on its corresponding link):</p>
+<ol>
+<li><a href="../spec/#source">Source</a> - this table stores data about the spatial datasets that can be used by spatial indices.</li>
+<li><a href="../spec/#basicconfiguration">BasicConfiguration</a> - this table stores the general parameters that can be employed by any spatial index. It may includes the specific information regarding the employed storage device as follows:<ul>
+<li><a href="../spec/#storagesystem">StorageSystem</a> - this table describes the storage system that the spatial index should employ. This can be further specialized if the storage system is the Flash-DBSim:<ul>
+<li><a href="../spec/#flashdbsimconfiguration">FlashDBSimConfiguration</a> - this table stores specific parameters of the flash memory emulated by the Flash-DBSim:<ul>
+<li><a href="../spec/#virtualflashdevice">VirtualFlashDevice</a> - parameters of the flash device of the Flash-DBSim.</li>
+<li><a href="../spec/#flashtranslationlayer">FlashTranslationLayer</a> - parameters of the flash translation layer of the Flash-DBSim.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="../spec/#specializedconfiguration">SpecializedConfiguration</a> - this table generalizes the specific parameters of a spatial index. Thus, each specialization of this table represents the specific parameters of a given spatial index. The specialized tables are:</p>
+<ul>
+<li><a href="../spec/#rtreeconfiguration">RTreeConfiguration</a>, which refers to the parameters of the R-tree. </li>
+<li><a href="../spec/#rstartreeconfiguration">RStartConfiguration</a>, which refers to the parameters of the R*-tree.</li>
+<li><a href="../spec/#hilbertrtreeconfiguration">HilbertRTreeConfiguration</a>, which refers to the parameters of the Hilbert R-tree.</li>
+<li><a href="../spec/#fortreeconfiguration">FORTreeConfiguration</a>, which refers to the parameters of the FOR-tree.</li>
+<li><a href="../spec/#fastconfiguration">FASTConfiguration</a>, which refers to the parameters of FAST.</li>
+<li><a href="../spec/#efindconfiguration">eFINDConfiguration</a>, which refers to the parameters of eFIND.</li>
+</ul>
+<p>Further, these table may use the table <a href="../spec/#occupancyrate">OccupancyRate</a>, which stores the minimum and maximum occupancy of nodes.</p>
+</li>
+<li>
+<p><a href="../spec/#bufferconfiguration">BufferConfiguration</a> - this table stores the parameters of the buffer manager of the spatial index, if any.</p>
+</li>
+</ol>
+<p>FESTIval provides a script named <em><a href="https://github.com/accarniel/FESTIval/">festival-inserts.sql</a></em> that provides an extensive set of tuples for these relational tables. The default spatial indices included by this script can be downloaded at <a href="https://github.com/accarniel/FESTIval/wiki/">the wiki page of the FESTIval's Github project</a>. Users are also encouraged to insert new tuples in such tables in order to create new configurations, as needed. </p>
+<p>In addition, FESTIval internally manages the following tables that represent a spatial index:</p>
+<ul>
+<li><a href="../spec/#indexconfiguration">IndexConfiguration</a> - the combination of the primary key values of the four components creates an configuration for a spatial index to be hanled by FESTIval.</li>
+<li><a href="../spec/#spatialindex">SpatialIndex</a> - this table represents the spatial index effectively created by the user. Note that different spatial indices can employ the same configuration; however, they can have different contents because of the operations executed in workloads.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users should not insert new tuples into the tables <mark>IndexConfiguration</mark> and <mark>SpatialIndex</mark> because they are internally managed by FESTIval only.</p>
+</div>
+<h2 id="statistical_data_of_executed_workloads">Statistical Data of Executed Workloads<a class="headerlink" href="#statistical_data_of_executed_workloads" title="Permanent link">#</a></h2>
+<p>There are two types of statistical data managed by FESTIval: (i) general statistical data that every index operation can generate, and (ii) statistical data related to the index structure. The relational tables storing statistical data are (see the specification of a relational table by clicking on its corresponding link):</p>
+<ul>
+<li><a href="../spec/#execution">Execution</a> - this table stores general statistical data related to the execution of index operations like insertions, updates, and deletions. </li>
+<li><a href="../spec/#spatialindex">ReadWriteOrder</a> - this table stores the order of reads and writes performed on the storage device by the index operations.</li>
+<li><a href="../spec/#indexconfiguration">FlashSimulatorStatistics</a> - this table stores statistical data from the flash simulator, if it was used by the spatial index.</li>
+<li><a href="../spec/#spatialindex">IndexSnapshot</a> - this table stores statistical data related to the structure of the index.</li>
+<li><a href="../spec/#printindex">PrintIndex</a> - this table stores all index pages of the spatial index, allowing users to visualize the structure of the index using a geographical information system like <a href="https://qgis.org/">QGIS</a>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We do not encourage users to change the structure of the tables storing statistical data, as well as we do not encourage to manually insert new values in such tables. Be careful if you really need to modify something (e.g., consider to make a copy of this content in another temporary table).</p>
+</div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../install/" title="Download and Install" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Download and Install
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../spec/" title="Specifications" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Specifications
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2014 - 2018 Anderson Chaves Carniel
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/accarniel/FESTIval/" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
