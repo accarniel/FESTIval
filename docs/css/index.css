@@ -1,0 +1,21 @@
+img[alt="FESTIval logo"] { 
+	width: 180px; 
+}
+
+.column{
+	float:left;
+	width: :30%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row {
+    margin: 0 auto;
+    padding: 10px;
+    width: 80%;
+}

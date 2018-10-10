@@ -1,23 +1,44 @@
-site_name: FESTIval
-pages:
+site_name: 'FESTIval'
+site_description: 'A PostgreSQL extension for conducting experimental evaluations of spatial indices'
+site_author: 'Anderson Chaves Carniel'
+site_url: 'https://accarniel.github.io/FESTIval'
+copyright: 'Copyright &copy; 2014 - 2018 Anderson Chaves Carniel'
+nav:
     - Home: index.md
-    - Download: download/overview.md
+    - Download and Install: install.md
     - Data Schema:
-      - Quick start: data_schema/data_schema_overview.md
-      - Specification of the relational tables: data_schema/data_schema_spec.md
+      - Quick start: data_schema/overview.md
+      - Specifications: data_schema/spec.md
     - Operations:
-      - Quick start: operations/operations_overview.md
-      - General operations: operations/general_operations.md
-      - Auxiliary operations: operations/auxiliary_operations.md
-      - Atomic operations: operations/atomic_operations.md
-    - Contributing: contrib/contributing.md 
-    - Contact: contact/contact.md
-    - Publications: pub/publication.md
-    - License: license/License.md
+      - Quick start: operations/overview.md
+      - General operations: 
+        - FT_CreateEmptySpatialIndex: operations/ft_createemptyspatialindex.md
+        - FT_Insert: operations/ft_insert.md
+        - FT_Delete: operations/ft_delete.md
+        - FT_Update: operations/ft_update.md
+        - FT_QuerySpatialIndex: operations/ft_queryspatialindex.md
+        - FT_ApplyAllModificationsForFAI: operations/ft_applyallmodificationsforfai.md
+        - FT_ApplyAllModificationsFromBuffer: operations/ft_applyallmodificationsfrombuffer.md
+      - Auxiliary operations: 
+        - FT_StartCollectStatistics: operations/ft_startcollectstatistics.md
+        - FT_CollectOrderOfReadWrite: operations/ft_collectorderofreadwrite.md
+        - FT_StoreStatisticalData: operations/ft_storestatisticaldata.md
+        - FT_StoreIndexSnapshot: operations/ft_storeindexsnapshot.md
+        - FT_SetExecutionName: operations/ft_setexecutionname.md
+      - Atomic operations: 
+        - FT_AInsert: operations/ft_ainsert.md
+        - FT_ADelete: operations/ft_adelete.md
+        - FT_AUpdate: operations/ft_aupdate.md
+        - FT_AQuerySpatialIndex: operations/ft_aqueryspatialindex.md
+    - Creating and Executing Workloads:
+      - Quick start: workloads/overview.md
+      - Examples:
+        - FT_CreateSpatialIndex: workloads/ft_createspatialindex.md
+    - Contributing: contributing.md 
+    - Contact: contact.md
+    - Publications: publications.md
 repo_url: https://github.com/accarniel/FESTIval
-markdown_extensions:
-    - toc:
-        separator: "_"
+repo_name: 'accarniel/FESTIval'
 theme: 
   name: 'material'
   palette:
@@ -27,11 +48,17 @@ extra:
   social:
     - type: 'github'
       link: 'https://github.com/accarniel/FESTIval/'
+extra_css:
+  - 'css/index.css'
+  - 'css/colors.css'
+edit_uri: '' #if we want links to the github page, we exclude this line
 markdown_extensions:
   - admonition
   - codehilite
+  - footnotes
   - toc:
-      permalink: true
+      permalink: "#"
+      separator: "_"
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
