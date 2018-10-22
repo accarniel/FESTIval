@@ -12,6 +12,7 @@ FESTIval has been used as the main tool to **understand the impact of SSDs on th
 
 FESTIval has also been employed to **measure the performance of gains of eFIND**, a generic and efficient framework that transforms a disk-based spatial index into a flash-aware spatial index (e.g., transforms an R-tree to an eFIND R-tree). eFIND is described in:
 
+* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A generic and efficient framework for flash-aware spatial indexing. Information Systems, https://doi.org/10.1016/j.is.2018.09.004, 2018](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899)
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A Generic and Efficient Framework for Spatial Indexing on Flash-based Solid State Drives. In Proceedings of the 21st European Conference on Advances in Databases and Information Systems (ADBIS), p. 229-243, 2017.](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16)
 
 FESTIval also provides support for **flash simulators** (e.g., [FlashDBSim](http://kdelab.ustc.edu.cn/flash-dbsim/index_en.html)) when analyzing the performance of spatial indices, such as reported in:
