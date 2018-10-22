@@ -44,7 +44,7 @@ FESTIval also employs [PostGIS](https://postgis.net/), a PostgreSQL extension th
 Currently, FESTIval allows users to:
 
 * evaluate disk-based spatial indices (i.e., indices for magnetic disks), such as the [R-tree](https://dl.acm.org/citation.cfm?id=602266).
-* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16).
+* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899).
 * specify and execute user-defined workloads by using a unique environment.
 * access an integrated data schema that stores index configurations and statistical data of executed workloads.
 * use any spatial dataset in experiments. [Default spatial datasets](https://github.com/accarniel/FESTIval/wiki/) are also provided.
