@@ -12,7 +12,7 @@ FESTIval has been used as the main tool to **understand the impact of SSDs on th
 
 FESTIval has also been employed to **measure the performance of gains of eFIND**, a generic and efficient framework that transforms a disk-based spatial index into a flash-aware spatial index (e.g., transforms an R-tree to an eFIND R-tree). eFIND is described in:
 
-* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A generic and efficient framework for flash-aware spatial indexing. Information Systems, https://doi.org/10.1016/j.is.2018.09.004, 2018](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899)
+* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A generic and efficient framework for flash-aware spatial indexing. Information Systems, https://doi.org/10.1016/j.is.2018.09.004, 2018.](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899) 
 
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A Generic and Efficient Framework for Spatial Indexing on Flash-based Solid State Drives. In Proceedings of the 21st European Conference on Advances in Databases and Information Systems (ADBIS), p. 229-243, 2017.](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16)
 
@@ -26,7 +26,7 @@ In order to facilitate the execution of experiments, FESTIval provides [**defaul
 
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. Spatial Datasets for Conducting Experimental Evaluations of Spatial Indices. In Proceedings of the 32nd Brazilian Symposium on Databases (SBBD) - Workshop Dataset Showcase, p. 286-295, 2017.](https://www.researchgate.net/publication/320270968_Spatial_Datasets_for_Conducting_Experimental_Evaluations_of_Spatial_Indices)
 
-Originally, FESTIval has been developed in the context of a **Ph.D. work**. The main goals of this Ph.D. work are described in:
+Originally, FESTIval has been developed in the context of the **Ph.D. work** of [Anderson C. Carniel](https://accarniel.github.io/). The main goals of this Ph.D. work are described in:
 
 * [Carniel, A. C.; Ciferri, C. D. A. Spatial Indexing in Flash Memories: Proposal of an Efficient and Robust Spatial Index with Durability. In Proceedings of the Satellite Events of the 31st Brazilian Symposium on Databases (SBBD), p. 66-73, 2016.](http://sbbd2016.fpc.ufba.br/sbbd2016/wtdbd/wtdbd-2016_paper_8.pdf)
 * [Carniel, A. C. Spatial Indexing on Flash-based Solid State Drives. In Proceedings of the VLDB 2018 PhD Workshop, p. 1-4, 2018.](http://ceur-ws.org/Vol-2175/paper09.pdf)
