@@ -22,10 +22,11 @@
 </div>
 
 
-To cite FESTIval, please mention its first version:
+To cite FESTIval, please mention its following journal article:
 
-* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. Experimental Evaluation of Spatial Indices with FESTIval. In Proceedings of the Satellite Events of the 31st Brazilian Symposium on Databases (SBBD), p. 123–128, 2016.](https://www.researchgate.net/publication/310295040_Experimental_Evaluation_of_Spatial_Indices_with_FESTIval)
+* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. FESTIval: A versatile framework for conducting experimental evaluations of spatial indices. MethodsX, vol. 7, 2020, 100695, 2020.](https://www.sciencedirect.com/science/article/pii/S2215016119302717)
 
+This article deeply describes FESTIval and its internal structures.
 
 ## Overview
 
