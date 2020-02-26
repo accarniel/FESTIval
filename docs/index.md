@@ -15,7 +15,8 @@
 				<th>Source code</th>
 			</tr>	
 			<tr>
-				<td colspan="2">We are currently working on making </br> FESTIval publicly available at <a href="https://github.com/accarniel/FESTIval" target="_blank">its GitHub page</a>.</td>
+				<td><a href="https://github.com/accarniel/FESTIval/archive/v1.0.zip" target="_blank">FESTIval-v1.0</a></td>
+				<td><a href="https://github.com/accarniel/FESTIval" target="_blank">Github Project</a></td>
 			</tr>
 		</table>
 	</div>
@@ -44,8 +45,8 @@ FESTIval also employs [PostGIS](https://postgis.net/), a PostgreSQL extension th
 
 Currently, FESTIval allows users to:
 
-* evaluate disk-based spatial indices (i.e., indices for magnetic disks), such as the [R-tree](https://dl.acm.org/citation.cfm?id=602266).
-* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899).
+* evaluate disk-based spatial indices (i.e., indices for magnetic disks): [R-tree](https://dl.acm.org/citation.cfm?id=602266), [R*-tree](https://dl.acm.org/doi/10.1145/93597.98741), and [Hilbert R-tree](http://www.vldb.org/conf/1994/P500.PDF).
+* evaluate flash-aware spatial indices (i.e, indices for flash memories): [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899).
 * specify and execute user-defined workloads by using a unique environment.
 * access an integrated data schema that stores index configurations and statistical data of executed workloads.
 * use any spatial dataset in experiments. [Default spatial datasets](https://github.com/accarniel/FESTIval/wiki/) are also provided.

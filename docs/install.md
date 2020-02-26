@@ -59,7 +59,7 @@ sudo make install
 
 ## Enabling FESTIval in a Database
 
-Connect to your database using *pgAdminIII* or *psql*, and execute the following SQL statements to enable FESTIval.
+Connect to your database using *pgAdmin* or *psql*, and execute the following SQL statements to enable FESTIval.
 
 ``` SQL
 CREATE EXTENSION festival;
@@ -82,3 +82,12 @@ DROP EXTENSION festival;
 
 !!! danger
 	Be careful before dropping a table. Disabling FESTIval will also delete its data schema, including their stored data!
+
+FESTIval also provides a set of files that contain default values for relational tables of **fds**. It is available in the directory called **default-values**. After extracting the file *default-values-files.tar.xz*, you will be able to execute the *festival-inserts.sql* as follows. 
+
+```
+psql -U user -d database -vfestivaldir=/f_path/ -f /f_path/festival-inserts.sql
+```
+
+where <span class="param">user</span> is the user name of the PostgreSQL, <span class="param">database</span> is the database name in which FESTIval is enabled, and <span class="param">/f_path/</span> is the full path of the FESTIval’s source code.
+

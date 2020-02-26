@@ -2,7 +2,7 @@ site_name: 'FESTIval'
 site_description: 'A PostgreSQL extension for conducting experimental evaluations of spatial indices'
 site_author: 'Anderson Chaves Carniel'
 site_url: 'https://accarniel.github.io/FESTIval'
-copyright: 'Copyright &copy; 2014 - 2018 Anderson Chaves Carniel'
+copyright: 'Copyright &copy; 2014 - 2020 Anderson Chaves Carniel'
 nav:
     - Home: index.md
     - Download and Install: install.md
