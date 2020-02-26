@@ -1,0 +1,1 @@
+If you plan to make use of our default values for the FESTIval data schema, then you must extract the default-values-files.tar.xz file. Afterwards, you are able to load it by executing the festival-inserts.sql file in the root directory of FESTIval project.
