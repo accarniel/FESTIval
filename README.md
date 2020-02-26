@@ -40,7 +40,7 @@ Please, access our detailed documentation [here](https://accarniel.github.io/FES
 
 ### Acknowledgments
 
-This project was supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil (2015-2018). FESTIval is mantained and developed by Anderson Chaves Carniel. 
+This project was supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil (2015-2018). FESTIval is mantained and developed by [Anderson Chaves Carniel](https://accarniel.github.io/). 
 
-Research conducted at the University of São Paulo and the Federal University of Technology - Paraná in Brazil
+Research conducted at the University of São Paulo and the Federal University of Technology - Paraná in Brazil.
 
