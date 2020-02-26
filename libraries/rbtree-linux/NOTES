@@ -1,0 +1,8 @@
+FESTIval employs the Red-Black tree implemented in the Linux, with minimal changes as described below. The following files are used: linux/include/linux/compiler.h, linux/include/linux/rbtree.h, linux/include/linux/rbtree_augmented.h, and linux/lib/rbtree.c. The version of linux project that these files were extracted is v4.13 of the github project https://github.com/torvalds/linux.
+
+Minimal changes made:
+
+1 - we have excluded the RCU support (https://en.wikipedia.org/wiki/Read-copy-update) since we do not need it yet. Thus, we commented all the lines of code with respect RCU.
+2 - we have included the following needed macros in the rbtree.h - offsetof and container_of (extracted from linux/include/linux/stddef.h)
+3 - the line #include "compiler-gcc.h" of the compiler.h is commented.
+4 - the line #define EXPORT_SYMBOL(x) was added in the rbtree.h.

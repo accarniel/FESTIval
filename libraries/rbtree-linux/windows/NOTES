@@ -1,0 +1,4 @@
+This is a more basic version of the Red-Black tree extracted from the linux source code.
+Actually, this version is extracted from a very interesting benchmark that compares the efficiency of red-black trees - github project: https://github.com/sebhub/rb-bench/tree/feabbf0c469252eeae0758573de5b6a52f2f5957
+
+FUTURE WORK: Try to use this version for compiling the FESTIval in windows.
