@@ -1,6 +1,8 @@
 # FESTIval
 
-FESTIval is a framework, implemented as a PostgreSQL extension, for conducting experimental evaluations of spatial indices. The complete documentation of FESTIval is available [here](https://github.com/accarniel/FESTIval/wiki). We are currently working on to make FESTIval publicly available. Feel free to see how FESTIval is useful by accessing the [publications employing FESTIval](https://github.com/accarniel/FESTIval/wiki/Publications).
+FESTIval is a framework, implemented as a PostgreSQL extension, for conducting experimental evaluations of spatial indices. The complete documentation of FESTIval is available [here](https://github.com/accarniel/FESTIval/wiki). 
+
+The first version of FESTIval is publicly available (FESTIval-v1.0 in its release page). Feel free to see how FESTIval is useful by accessing the [publications employing FESTIval](https://accarniel.github.io/FESTIval/publications/).
 
 FESTIval is deeply described in:
 
@@ -24,7 +26,7 @@ FESTIval is implemented in C using the extensibility provided by the PostgreSQL'
 Currently, FESTIval allows us to:
 
 * evaluate disk-based spatial indices (i.e., indices for magnetic disks), such as the [R-tree](https://dl.acm.org/citation.cfm?id=602266).
-* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16).
+* evaluate flash-aware spatial indices (i.e, indices for flash memories), such as the [FOR-tree](https://www.sciencedirect.com/science/article/pii/S0957417415000263), [FAST-based indices](https://link.springer.com/article/10.1007/s10707-012-0164-9), and [eFIND-based indices](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899).
 * specify and execute user-defined workloads by using a unique environment.
 * access an integrated data schema that stores index configurations and statistical data of executed workloads.
 * use any spatial dataset in experiments.
@@ -34,11 +36,11 @@ FESTIval manages a schema in the PostgreSQL called *fds*. This schema is automat
 
 ## How to Install and Use FESTIval?
 
-Please, access our detailed documentation [here](https://github.com/accarniel/FESTIval/wiki), which provides the step-by-step to perform the installation of FESTIval. It also includes several examples of examples together with a full description of the SQL operations of FESTIval.
+Please, access our detailed documentation [here](https://accarniel.github.io/FESTIval/), which provides the step-by-step to perform the installation of FESTIval. It also includes several examples of examples together with a full description of the SQL operations of FESTIval.
 
 ### Acknowledgments
 
-This project is supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil. FESTIval is mantained and developed by Anderson Chaves Carniel. Supervisor: Prof. Dr. Cristina Dutra de Aguiar Ciferri. Collaborator: Prof. Dr. Ricardo Rodrigues Ciferri.
+This project was supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil (2015-2018). FESTIval is mantained and developed by Anderson Chaves Carniel. 
 
-Research conducted at the University of São Paulo in Brazil
+Research conducted at the University of São Paulo and the Federal University of Technology - Paraná in Brazil
 
