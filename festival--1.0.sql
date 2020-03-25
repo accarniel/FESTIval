@@ -179,8 +179,8 @@ CREATE TABLE fds.ForTreeConfiguration (
 CREATE TABLE fds.RStarTreeConfiguration (
   sc_id INTEGER NOT NULL,
   or_id INTEGER NOT NULL,
-  reinsertion_perc_internal_node DOUBLE PRECISION NOT NULL CHECK (reinsertion_perc_internal_node > 0),
-  reinsertion_perc_leaf_node DOUBLE PRECISION NOT NULL CHECK (reinsertion_perc_leaf_node > 0),
+  reinsertion_perc_internal_node DOUBLE PRECISION NOT NULL CHECK (reinsertion_perc_internal_node >= 0),
+  reinsertion_perc_leaf_node DOUBLE PRECISION NOT NULL CHECK (reinsertion_perc_leaf_node >= 0),
   reinsertion_type VARCHAR NOT NULL CHECK (upper(reinsertion_type) IN ('FAR REINSERT', 'CLOSE REINSERT')),
   max_neighbors_exam INTEGER NOT NULL,
   PRIMARY KEY(sc_id),
@@ -427,6 +427,11 @@ CREATE TABLE fds.FlashSimulatorStatistics (
 ------------------------------ GENERAL OPERATIONS --------------------------------------
 ----------------------------------------------------------------------------------------
 
+CREATE OR REPLACE FUNCTION FT_CreateEmptySpatialIndex(index_id int4, index_name text, index_path text, src_id int4, bc_id int4, sc_id int4, buf_id int4)
+	RETURNS bool
+	AS 'MODULE_PATHNAME', 'STI_create_empty_index'
+	LANGUAGE 'c' VOLATILE;
+
 CREATE OR REPLACE FUNCTION FT_CreateEmptySpatialIndex(index_id int4, absolute_path text, src_id int4, bc_id int4, sc_id int4, buf_id int4)
 	RETURNS bool AS 
 $$
@@ -436,16 +441,26 @@ $$
 $$ 
 LANGUAGE SQL;
 
-CREATE OR REPLACE FUNCTION FT_CreateEmptySpatialIndex(index_id int4, index_name text, index_path text, src_id int4, bc_id int4, sc_id int4, buf_id int4)
-	RETURNS bool
-	AS 'MODULE_PATHNAME', 'STI_create_empty_index'
-	LANGUAGE 'c' VOLATILE;
-
 CREATE TYPE __query_result AS (id integer, geo geometry);
 
 -------------------------------------------------------------------------------
 ------------------ INSERTION, DELETION, AND UPDATE ----------------------------
 -------------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION FT_Insert(index_name text, index_path text, p int4, geom geometry)
+	RETURNS bool
+	AS 'MODULE_PATHNAME', 'STI_insert_entry'
+	LANGUAGE 'c' VOLATILE STRICT;
+
+CREATE OR REPLACE FUNCTION FT_Delete(index_name text, index_path text, p int4, geom geometry)
+	RETURNS bool
+	AS 'MODULE_PATHNAME', 'STI_remove_entry'
+	LANGUAGE 'c' VOLATILE STRICT;
+
+CREATE OR REPLACE FUNCTION FT_Update(index_name text, index_path text, old_p int4, old_geom geometry, new_p int4, new_geom geometry)
+	RETURNS bool
+	AS 'MODULE_PATHNAME', 'STI_update_entry'
+	LANGUAGE 'c' VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION FT_Insert(absolute_path text, p int4, geom geometry)
 	RETURNS bool AS
@@ -474,25 +489,15 @@ $$
 $$ 
 LANGUAGE SQL;
 
-CREATE OR REPLACE FUNCTION FT_Insert(index_name text, index_path text, p int4, geom geometry)
-	RETURNS bool
-	AS 'MODULE_PATHNAME', 'STI_insert_entry'
-	LANGUAGE 'c' VOLATILE STRICT;
-
-CREATE OR REPLACE FUNCTION FT_Delete(index_name text, index_path text, p int4, geom geometry)
-	RETURNS bool
-	AS 'MODULE_PATHNAME', 'STI_remove_entry'
-	LANGUAGE 'c' VOLATILE STRICT;
-
-CREATE OR REPLACE FUNCTION FT_Update(index_name text, index_path text, old_p int4, old_geom geometry, new_p int4, new_geom geometry)
-	RETURNS bool
-	AS 'MODULE_PATHNAME', 'STI_update_entry'
-	LANGUAGE 'c' VOLATILE STRICT;
-
 ------------------------------------------------------------------
 -------------------------- QUERYING AN INDEX ---------------------
 ------------------------------------------------------------------
 --processing option = 1 means that the refinement and filter step will be processed. processing option = 2 means that only the filter step will be processed
+CREATE OR REPLACE FUNCTION FT_QuerySpatialIndex(index_name text, index_path text, type_query int4, obj geometry, predicate int4, processing_option int4 default 1)
+	RETURNS SETOF __query_result
+	AS 'MODULE_PATHNAME', 'STI_query_spatial_index'
+	LANGUAGE 'c' VOLATILE STRICT;
+
 CREATE OR REPLACE FUNCTION FT_QuerySpatialIndex(absolute_path text, type_query int4, obj geometry, predicate int4, processing_option int4 default 1)
 	RETURNS SETOF __query_result AS
 $$
@@ -502,14 +507,23 @@ $$
 $$ 
 LANGUAGE SQL;
 
-CREATE OR REPLACE FUNCTION FT_QuerySpatialIndex(index_name text, index_path text, type_query int4, obj geometry, predicate int4, processing_option int4 default 1)
-	RETURNS SETOF __query_result
-	AS 'MODULE_PATHNAME', 'STI_query_spatial_index'
-	LANGUAGE 'c' VOLATILE STRICT;
-
 ------------------------------------------------------------------------------------------
 -------------------------- APPLYING ALL MODIFICATIONS IN THE BUFFER ---------------------
 ------------------------------------------------------------------------------------------
+
+--this function apply all the modifications stored in the main memory buffer 
+--it can be done only for flash-aware indices (FAI)
+CREATE OR REPLACE FUNCTION FT_ApplyAllModificationsForFAI(index_name text, index_path text)
+	RETURNS bool
+	AS 'MODULE_PATHNAME', 'STI_finish_fai'
+	LANGUAGE 'c' VOLATILE STRICT;
+
+--this function apply all the modifications stored in the main memory standard buffer
+--that is, buffers specified in the BufferConfiguration table (e.g., LRU)
+CREATE OR REPLACE FUNCTION FT_ApplyAllModificationsFromBuffer(index_name text, index_path text)
+	RETURNS bool
+	AS 'MODULE_PATHNAME', 'STI_finish_buffer'
+	LANGUAGE 'c' VOLATILE STRICT;
 
 CREATE OR REPLACE FUNCTION FT_ApplyAllModificationsForFAI(absolute_path text)
 	RETURNS bool AS
@@ -526,20 +540,6 @@ $$
 	substr(absolute_path, 0, char_length(absolute_path) - char_length(REGEXP_REPLACE(absolute_path, '.*/', '')) + 1))
 $$ 
 LANGUAGE SQL;
-
---this function apply all the modifications stored in the main memory buffer 
---it can be done only for flash-aware indices (FAI)
-CREATE OR REPLACE FUNCTION FT_ApplyAllModificationsForFAI(index_name text, index_path text)
-	RETURNS bool
-	AS 'MODULE_PATHNAME', 'STI_finish_fai'
-	LANGUAGE 'c' VOLATILE STRICT;
-
---this function apply all the modifications stored in the main memory standard buffer
---that is, buffers specified in the BufferConfiguration table (e.g., LRU)
-CREATE OR REPLACE FUNCTION FT_ApplyAllModificationsFromBuffer(index_name text, index_path text)
-	RETURNS bool
-	AS 'MODULE_PATHNAME', 'STI_finish_buffer'
-	LANGUAGE 'c' VOLATILE STRICT;
 
 ----------------------------------------------------------------------------------------------
 ----------------------------- AUXILIARY OPERATIONS -------------------------------------------
