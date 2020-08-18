@@ -788,7 +788,7 @@ $BODY$
 ------------------ DEFAULT WORKLOAD: CREATION OF SPATIAL INDEX ---------------------------------
 ------------------------------------------------------------------------------------------------
 
---index_id is the type of the index (1 for conventional RTREE, 2 for conventional R*-tree, 3 for FAST R-tree, 4 for FAST R*-tree, 5 for FOR-TREE)
+--index_id is the type of the index (Integer values from 1 to 10 to respectively represent the R-tree, the R*-tree, the Hilbert R-tree, the FAST R-tree, the FAST R*-tree, the FAST Hilbert R-tree, the FOR-tree, the eFIND R-tree, the eFIND R*-tree, and the eFIND Hilbert R-tree)
 --index_name is the name of the index
 --index_path is the directory of the index
 --src_id is the identifier of the source table from fds schema
