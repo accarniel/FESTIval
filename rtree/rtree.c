@@ -293,7 +293,7 @@ all entry rectangles in N.*/
                 } else if (rtree->type == FAST_RTREE_TYPE) {
                     fb_put_mod_bbox(&rtree->base, fast_spc, parent_add, bbox_clone(n_bbox), entry, h + 1);
                 } else if (rtree->type == eFIND_RTREE_TYPE) {
-                    efind_buf_mod_node(&rtree->base, efind_spc, parent_add, 
+                    efind_buf_mod_node(&rtree->base, efind_spc, parent_add,
                             (void*) rentry_clone(rtree->current_node->entries[entry]), h + 1);
                 } else {
                     _DEBUGF(ERROR, "Invalid R-tree specification %d", rtree->type);
@@ -396,7 +396,7 @@ set NN=PP If a split occurred, Repeat from AT2.*/
                     //we write the created node by the split with a new number page                
                     put_rnode(&rtree->base, nn, *split_address, h + 1);
                 } else if (rtree->type == FAST_RTREE_TYPE) {
-                    int in;
+                    /*int in;
                     for (in = 0; in < n->nofentries; in++) {
                         //we removed the if statement here because the modification made on the parent should also be done here!
                         //we put the new pointer and new bbox for the split node
@@ -407,6 +407,16 @@ set NN=PP If a split occurred, Repeat from AT2.*/
                     for (in = cp - 2; in >= n->nofentries; in--) {
                         fb_put_mod_bbox(&rtree->base, fast_spc, parent_add, NULL, in, h + 1);
                     }
+                    //we put the new node in the buffer
+                    fb_put_new_node(&rtree->base, fast_spc, *split_address,
+                            (void *) rnode_clone(nn), h + 1);*/
+
+                    //remove the old version of modified node
+                    fb_del_node(&rtree->base, fast_spc, parent_add, h + 1);
+                    //we put the node in the buffer
+                    fb_put_new_node(&rtree->base, fast_spc, parent_add,
+                            (void *) rnode_clone(n), h + 1);
+
                     //we put the new node in the buffer
                     fb_put_new_node(&rtree->base, fast_spc, *split_address,
                             (void *) rnode_clone(nn), h + 1);
@@ -526,9 +536,9 @@ old entrees of L
 #endif       
 
     } else { /* we do not have space */
-        RNode *cp = NULL;
-        if (rtree->type == FAST_RTREE_TYPE)
-            cp = rnode_clone(chosen_node);
+        //RNode *cp = NULL;
+        //if (rtree->type == FAST_RTREE_TYPE)
+        //    cp = rnode_clone(chosen_node);
 
         /*then we have to split the chosen_node that is exceeding its capacity*/
         split_node(rtree->spec, chosen_node, height, l, ll);
@@ -546,6 +556,7 @@ old entrees of L
             //we write the created node by the split with a new number page        
             put_rnode(&rtree->base, ll, split_address, height);
         } else if (rtree->type == FAST_RTREE_TYPE) {
+            /*
             int in;
             for (in = 0; in < l->nofentries; in++) {
                 if (l->entries[in]->pointer != cp->entries[in]->pointer) {
@@ -563,7 +574,19 @@ old entrees of L
             //we put the new node in the buffer
             fb_put_new_node(&rtree->base, fast_spc, split_address,
                     (void *) rnode_clone(ll), height);
-            rnode_free(cp);
+            rnode_free(cp);*/
+
+            /*it is more efficient if we remove the old version and create the modified node again*/
+
+            //remove the old version of chosen_node
+            fb_del_node(&rtree->base, fast_spc, chosen_address, height);
+            //we put the node in the buffer
+            fb_put_new_node(&rtree->base, fast_spc, chosen_address,
+                    (void *) rnode_clone(l), height);
+
+            //we put the new node in the buffer
+            fb_put_new_node(&rtree->base, fast_spc, split_address,
+                    (void *) rnode_clone(ll), height);
         } else if (rtree->type == eFIND_RTREE_TYPE) {
             int in;
             //we update the chosen node since it was split
