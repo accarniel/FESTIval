@@ -512,7 +512,9 @@ void write_log_mod_bbox(const SpatialIndex *base, FASTSpecification *spec,
         loc += sizeof (uint8_t);
 
         memcpy(loc, b, sizeof (BBox));
-        loc += sizeof (BBox);
+        loc += sizeof (BBox);        
+        
+        lwfree(b);
     }
     //we sequentially write it
     raw_write_log(spec->log_file, buf, bufsize);
@@ -520,8 +522,7 @@ void write_log_mod_bbox(const SpatialIndex *base, FASTSpecification *spec,
     spec->offset_last_elem_log += spec->size_last_elem_log;
     spec->size_last_elem_log = bufsize;
 
-    lwfree(buf);
-    lwfree(b);
+    lwfree(buf);    
 
 #ifdef COLLECT_STATISTICAL_DATA
     _cur_log_size = spec->offset_last_elem_log + spec->size_last_elem_log;
