@@ -412,7 +412,6 @@ bounding rectangle of N*/
          * for the FAST, we iterate the entries of new in order to modify the different entries in the buffer
          * we remove the remaining entries of chosen_node considering the size of new
          * as a result, we have stored in the buffer the node new.
-         * (this is similar to the split case)
          */
         int in;
         for (in = 0; in < new->nofentries; in++) {
@@ -433,7 +432,6 @@ bounding rectangle of N*/
          * we remove this node
          * then we create it again
          * finally we insert this node with the non-removed elements
-         * (this is similar to the split case)
          */
         efind_buf_del_node(&rstar->base, efind_spc, chosen_address, cn_height);
         efind_buf_create_node(&rstar->base, efind_spc, chosen_address, cn_height);
@@ -569,15 +567,15 @@ void insert_entry_rstartree(RStarTree *rstar, REntry *input, int i_height) {
             break;
         } else {
             RNode *l, *ll;
-            RNode *cp = NULL;
+           // RNode *cp = NULL;
             int split_address;
             l = rnode_create_empty();
             ll = rnode_create_empty();
             //we add the new entry in the current chosen_node
             rnode_add_rentry(chosen_node, input);
 
-            if (rstar->type == FAST_RSTARTREE_TYPE)
-                cp = rnode_clone(chosen_node);
+            //if (rstar->type == FAST_RSTARTREE_TYPE)
+            //    cp = rnode_clone(chosen_node);
 
             //_DEBUG(NOTICE, "SPLITTING");
             //rnode_print(chosen_node, chosen_address);
@@ -596,7 +594,7 @@ void insert_entry_rstartree(RStarTree *rstar, REntry *input, int i_height) {
                 //we have to write the new created node from the split            
                 put_rnode(&rstar->base, ll, split_address, i_height);
             } else if (rstar->type == FAST_RSTARTREE_TYPE) {
-                int in;
+                /*int in;
                 for (in = 0; in < l->nofentries; in++) {
                     if (l->entries[in]->pointer != cp->entries[in]->pointer) {
                         //we put the new pointer and new bbox for the split node
@@ -612,6 +610,15 @@ void insert_entry_rstartree(RStarTree *rstar, REntry *input, int i_height) {
                 fb_put_new_node(&rstar->base, fast_spc, split_address,
                         (void *) rnode_clone(ll), i_height);
                 rnode_free(cp);
+                 the methodo above is not efficient
+                 */
+                
+                fb_del_node(&rstar->base, fast_spc, chosen_address, i_height);
+                fb_put_new_node(&rstar->base, fast_spc, chosen_address, 
+                        (void *) rnode_clone(l), i_height);
+                
+                fb_put_new_node(&rstar->base, fast_spc, split_address,
+                        (void *) rnode_clone(ll), i_height);
             } else if (rstar->type == eFIND_RSTARTREE_TYPE) {
                 int in;
                 /* eFIND do this as follows: 
@@ -1009,4 +1016,3 @@ SpatialIndex *rstartree_empty_create(char *file, Source *src, GenericParameters 
 
     return &rstar->base;
 }
-
