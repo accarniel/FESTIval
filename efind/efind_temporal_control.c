@@ -16,13 +16,16 @@
  * This file implements the temporal control employed by eFIND
  */
 
+#include <math.h>
+
+#include "../main/log_messages.h" //for messages
+
 #include "efind_temporal_control.h" //for basic operations
 #include "efind_flushing_manager.h" //for the chosenPage structure
 #include "efind_buffer_manager.h" //for operation of the read buffer
 
 #include "../libraries/uthash/uthash.h" //for temporal control for reads
 
-#include "../main/log_messages.h" //for messages
 #include "../main/statistical_processing.h" //for collection of statistical data
 
 /* we have two lists for the temporal control -> reads and writes

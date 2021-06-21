@@ -22,6 +22,8 @@
 #include <float.h> //to the maximum float number
 #include <stringbuffer.h> //to print/debug strings as needed
 
+#include "../main/log_messages.h" //for messages
+
 #include "efind_buffer_manager.h" //basic operations
 #include "efind_read_buffer_policies.h" //for the read buffer policy implementations
 #include "efind_flushing_manager.h" //for the flushing operation
@@ -30,7 +32,6 @@
 #include "efind_mod_handler.h" //for handle the modifications (red-black tree)
 
 #include "../libraries/uthash/uthash.h" //for hashing structures
-#include "../main/log_messages.h" //for messages
 #include "../main/statistical_processing.h" //for collection of statistical data
 #include "../main/storage_handler.h" //to write the flushed nodes
 #include "../main/math_util.h" //for double comparators

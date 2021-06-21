@@ -14,6 +14,7 @@
 
 #include <liblwgeom.h> //for lwalloc
 #include <string.h> //for mmmove
+#include <math.h>
 #include "festival_defs.h"
 #include "spatial_index.h"
 #include "header_handler.h"

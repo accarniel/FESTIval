@@ -12,10 +12,12 @@
 # *
 # **********************************************************************/
 
-POSTGIS_SOURCE=/opt/postgis-2.2.5
-FLASHDBSIM_SOURCE=/opt/flash-dbsim-modified-linux-so-c-api
+POSTGIS_SOURCE=$(postgis)
+FLASHDBSIM_SOURCE=/home/pedro/Downloads/Flash-DBSim-for-Linux-1.0
 
-MODULE_big=festival-1.0
+$(shell python3 gen_config_h.py $(POSTGIS_SOURCE)/postgis_config.h)
+
+MODULE_big=festival-1.1
 OBJS= \
     main/bbox_handler.o \
     main/storage_handler.o \
@@ -66,9 +68,9 @@ OBJS= \
     postgres/festival_module.o \
     flashdbsim/flashdbsim.o
 EXTENSION = festival
-DATA = festival--1.0.sql
+DATA = festival--1.1.sql
 
-SHLIB_LINK = $(POSTGIS_SOURCE)/libpgcommon/libpgcommon.a $(POSTGIS_SOURCE)/postgis/postgis-2.2.so $(FLASHDBSIM_SOURCE)/C_API/libflashdb_capi.so -L/usr/local/lib -lgeos_c -llwgeom -lrt
+SHLIB_LINK = $(POSTGIS_SOURCE)/libpgcommon/libpgcommon.a $(POSTGIS_SOURCE)/postgis/postgis-*.so $(FLASHDBSIM_SOURCE)/C_API/libflashdb_capi.so -L/usr/local/lib -lgeos_c -llwgeom -lrt
 
 PG_CPPFLAGS = -I/usr/local/include -I$(POSTGIS_SOURCE)/liblwgeom/ -I$(POSTGIS_SOURCE)/libpgcommon/ -I$(POSTGIS_SOURCE)/postgis/ -I$(FLASHDBSIM_SOURCE)/C_API/include/ -I/usr/include/ -fPIC
 

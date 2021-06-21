@@ -50,7 +50,6 @@
         do { \
                 ereport((level), (errmsg_internal("[%s:%s:%d] " msg, __FILE__, __func__, __LINE__))); \
         } while (0);
-
 /* Display a simple message by using the ereport from postgres library (formated version) */
 #define _DEBUGF(level, msg, ...) \
         do { \

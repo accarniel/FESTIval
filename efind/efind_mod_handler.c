@@ -14,11 +14,12 @@
 
 #include <liblwgeom.h>
 
+#include "../main/log_messages.h" //for debug
+
 #include "efind_mod_handler.h"
 #include "../main/festival_defs.h" //for the index types
 #include "../main/math_util.h" //for DB_MIN
 
-#include "../main/log_messages.h" //for debug
 #include "efind_page_handler_augmented.h" //for operations of pages and entries
 
 /*
