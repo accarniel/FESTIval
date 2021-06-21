@@ -15,7 +15,7 @@
 				<th>Source code</th>
 			</tr>	
 			<tr>
-				<td><a href="https://github.com/accarniel/FESTIval/archive/v1.0.zip" target="_blank">FESTIval-v1.0</a></td>
+				<td><a href="https://github.com/accarniel/FESTIval/archive/refs/tags/v1.1.0.tar.gz" target="_blank">FESTIval-v1.1</a></td>
 				<td><a href="https://github.com/accarniel/FESTIval" target="_blank">Github Project</a></td>
 			</tr>
 		</table>
