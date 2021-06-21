@@ -18,6 +18,7 @@
  */
 
 #include "hilbertrtree.h"
+#include <math.h>
 
 #include "../main/log_messages.h" //messages errors
 #include "../fast/fast_buffer.h" //for FAST indices

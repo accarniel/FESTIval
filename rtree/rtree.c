@@ -367,9 +367,9 @@ set NN=PP If a split occurred, Repeat from AT2.*/
                 nn = rnode_create_empty();
                 rtree->current_node = NULL;
             } else {
-                int cp = 0;
-                if (rtree->type == FAST_RTREE_TYPE)
-                    cp = rtree->current_node->nofentries;
+                // int cp = 0;
+                // if (rtree->type == FAST_RTREE_TYPE)
+                //     cp = rtree->current_node->nofentries;
 
                 rnode_free(n);
                 rnode_free(nn);

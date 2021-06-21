@@ -20,6 +20,7 @@
 #include "executor/spi.h"
 #include "utils/memutils.h"
 
+#include <math.h>
 #include <liblwgeom.h>
 #include <unistd.h> //to handle POSTGIS objects
 #include "lwgeom_pg.h" //to convert POSTGIS objects
@@ -44,6 +45,8 @@
 
 #include "access/htup_details.h"
 #include "utils/builtins.h"
+
+#include "../festival_config.h"
 
 /*TO-DO validate the input values in order to create spatial index with valid configurations*/
 
@@ -1060,7 +1063,18 @@ Datum STI_store_collected_statistical_data(PG_FUNCTION_ARGS) {
         if (PG_ARGISNULL(4))
             _DEBUG(ERROR, "You must inform the complete path of a file in order to store the statistical data!");
         variant |= SO_STORE_STATISTICAL_IN_FILE;
+
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+        statistic_file = text_to_cstring(PG_GETARG_TEXT_PP(4));
+
+#else
+
         statistic_file = text2cstring(PG_GETARG_TEXT_PP(4));
+
+#endif
+
+        
     }
 
     /*(1 for collect and store only data for Execution table, 
@@ -1093,8 +1107,18 @@ Datum STI_store_collected_statistical_data(PG_FUNCTION_ARGS) {
         variant |= SO_FLASHSIMULATOR;
     }
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
+    
 
     cpuend = get_CPU_time();
     end = get_current_time();
@@ -1175,15 +1199,34 @@ Datum STI_store_index_snapshot(PG_FUNCTION_ARGS) {
         if (PG_ARGISNULL(4))
             _DEBUG(ERROR, "You must inform the complete path of a file in order to store the statistical data!");
         variant |= SO_STORE_STATISTICAL_IN_FILE;
-        statistic_file = text2cstring(PG_GETARG_TEXT_PP(4));
+
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    statistic_file = text_to_cstring(PG_GETARG_TEXT_PP(4));
+
+#else
+
+    statistic_file = text2cstring(PG_GETARG_TEXT_PP(4));
+    
+#endif
+
     }
 
     if (print_index) {
         variant |= SO_PRINTINDEX;
     }
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
 
     spc_path = lwalloc(strlen(index_name) + strlen(index_path) + strlen(".header") + 1);
     strcpy(spc_path, index_path);
@@ -1226,7 +1269,15 @@ Datum STI_set_execution_name(PG_FUNCTION_ARGS) {
         _execution_name = NULL;
     }
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    _execution_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+
+#else
+
     _execution_name = text2cstring(PG_GETARG_TEXT_PP(0));
+    
+#endif
 
     MemoryContextSwitchTo(oldcontext);
 #endif 
@@ -1275,8 +1326,17 @@ Datum STI_create_empty_index(PG_FUNCTION_ARGS) {
         buf_id = PG_GETARG_INT32(6);
     }
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(index_name_t);
+    index_path = text_to_cstring(index_path_t);
+
+#else
+
     index_name = text2cstring(index_name_t);
     index_path = text2cstring(index_path_t);
+    
+#endif
 
     /* we get the generic parameters */
     gp = read_basicconfiguration_from_fds(bc_id);
@@ -1465,8 +1525,18 @@ Datum STI_finish_fai(PG_FUNCTION_ARGS) {
     // this will survives until a restart of the server
     oldcontext = MemoryContextSwitchTo(TopMemoryContext);
 
+
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
 
     spc_path = lwalloc(strlen(index_name) + strlen(index_path) + strlen(".header") + 1);
     strcpy(spc_path, index_path);
@@ -1578,8 +1648,17 @@ Datum STI_finish_buffer(PG_FUNCTION_ARGS) {
     // this will survives until a restart of the server
     oldcontext = MemoryContextSwitchTo(TopMemoryContext);
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
 
     spc_path = lwalloc(strlen(index_name) + strlen(index_path) + strlen(".header") + 1);
     strcpy(spc_path, index_path);
@@ -1647,8 +1726,18 @@ Datum STI_insert_entry(PG_FUNCTION_ARGS) {
     // this will survives until a restart of the server
     oldcontext = MemoryContextSwitchTo(TopMemoryContext);
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
+
     lwgeom = lwgeom_from_gserialized(geom);
 
     spc_path = lwalloc(strlen(index_name) + strlen(index_path) + strlen(".header") + 1);
@@ -1736,8 +1825,19 @@ Datum STI_remove_entry(PG_FUNCTION_ARGS) {
     // this will survives until a restart of the server
     oldcontext = MemoryContextSwitchTo(TopMemoryContext);
 
+
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
+
     lwgeom = lwgeom_from_gserialized(geom);
 
     spc_path = lwalloc(strlen(index_name) + strlen(index_path) + strlen(".header") + 1);
@@ -1812,8 +1912,18 @@ Datum STI_update_entry(PG_FUNCTION_ARGS) {
     // this will survives until a restart of the server
     oldcontext = MemoryContextSwitchTo(TopMemoryContext);
 
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
+
     old_lwgeom = lwgeom_from_gserialized(geom);
     new_lwgeom = lwgeom_from_gserialized(geom2);
 
@@ -1881,8 +1991,19 @@ Datum STI_update_entry(PG_FUNCTION_ARGS) {
 PG_FUNCTION_INFO_V1(STI_query_spatial_index);
 
 Datum STI_query_spatial_index(PG_FUNCTION_ARGS) {
+
+#if FESTIVAL_POSTGIS_VERSION >= 300
+
+    char *index_name = text_to_cstring(PG_GETARG_TEXT_PP(0));
+    char *index_path = text_to_cstring(PG_GETARG_TEXT_PP(1));
+
+#else
+
     char *index_name = text2cstring(PG_GETARG_TEXT_PP(0));
     char *index_path = text2cstring(PG_GETARG_TEXT_PP(1));
+    
+#endif
+
     int type_query = PG_GETARG_INT32(2);
     LWGEOM *lwgeom;
     GSERIALIZED *geom = PG_GETARG_GSERIALIZED_P(3);

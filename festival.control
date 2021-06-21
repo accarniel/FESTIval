@@ -1,6 +1,5 @@
-#control festival extension - version 1.0
+#control festival extension - version 1.1
 comment = 'Spatial indexes designed for magnetic disks and flash devices.'
-default_version = '1.0'
-#module_pathname='/usr/lib/postgresql/9.5/lib/festival-1.0.so'
-module_pathname='$libdir/festival-1.0'
+default_version = '1.1'
+module_pathname='$libdir/festival-1.1'
 relocatable = true
