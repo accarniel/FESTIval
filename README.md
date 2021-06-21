@@ -2,7 +2,7 @@
 
 FESTIval is a framework, implemented as a PostgreSQL extension, for conducting experimental evaluations of spatial indices. The complete documentation of FESTIval is available [here](https://github.com/accarniel/FESTIval/wiki). 
 
-The first version of FESTIval is publicly available (FESTIval-v1.0 in its release page). Feel free to see how FESTIval is useful by accessing the [publications employing FESTIval](https://accarniel.github.io/FESTIval/publications/).
+The first version of FESTIval is publicly available (FESTIval-v1.1 in its release page). Feel free to see how FESTIval is useful by accessing the [publications employing FESTIval](https://accarniel.github.io/FESTIval/publications/).
 
 FESTIval is deeply described in:
 
