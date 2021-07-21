@@ -1,0 +1,64 @@
+FTL Module - FTL01
+
++---------------+--------------------------------------------------------+
+| Class Name    | FTL01                                                  |
++---------------+--------------------------------------------------------+
+| Algorithm     | FTL Algorithm                                          |
++---------------+--------------------------------------------------------+
+
++------------------------------------------------------------------------+
+| Features                                                               |
++---------------+--------------------------------------------------------+
+| Wear Leveling | SUPPORTED                                              |
++---------------+--------------------------------------------------------+
+
++---------------------------+
+| Used VFD_INFO				|
++-----------------------+---+
+| id					| -	|
+|						|	|
+| mapListSize			| 〔	|
+| wearLevelingThreshold	| 〔	|
++-----------------------+---+ ('-' means not necessary)
+
+Others:
+	， FTL01 simulates a simple FTL algorithm.
+	， FTL01 supports wear-leveling algorithm.
+	， FTL01 will call garbage collection process when no free page can be allocated.
+	， FTL01 is a 'VERY VERY VERY SIMPLE' ftl algorithm.
+
+Exception List
+ ， Constructor/Destructor - None
+ ， QueryInterface
+	- RV_ERROR_UNSUPPORT_INTERFACE: The specified interface is not supported in NandDevice01.
+ ， GetReadCount/GetWriteCount/GetEraseCount - None
+ ， Initialize/Release - None
+ ， AllocPage - None
+ ， ReleasePage
+	- RV_ERROR_INVALID_LBA: Wrong lba address.
+	- RV_FAIL: Wrong page state. (won't happen normally)
+ ， ReadPage
+	- RV_ERROR_INVALID_LBA: Wrong lba address.
+	- RV_ERROR_INVALID_PAGE_STATE: Wrong page state.
+ ， WritePage
+	- RV_ERROR_INVALID_LBA: Wrong lba address.
+	- RV_ERROR_INVALID_PAGE_STATE: Wrong page state.
+	- RV_ERROR_FLASH_NO_MEMORY: No more memory to allocate when writing. 
+ ， TranslateLBAtoPBA/RegisterEntry - None
+ ， AllocNewPage - None
+ ， ReclaimBlock
+	- RV_ERROR_UNSUPPORT_OBJECT: Unsupported object (without derived from specified interface).
+	- RV_ERROR_FLASH_NOT_DIRTY: No dirty block can be reclaimed.
+ ， GetPageState/SetPageState - None
+ ， MoveDirtyToDead - None
+
+Reference:
+ - Understanding the Flash Translation Layer (FTL) specification, Intel, 1998
+ 	
+Update History
+ - 2009-04-29: A major bug is fixed. Now, FTL01 can work normally.
+ - 2009-04-19: Minor revision.
+ - 2009-04-11: All codes get ready.
+
+Written by Su.Xuan@KDELab@USTC <sdbchina|mail.ustc.edu.cn>
+Lastest Update: 2009-04-29
