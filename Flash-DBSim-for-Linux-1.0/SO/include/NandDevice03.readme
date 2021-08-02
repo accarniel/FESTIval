@@ -1,0 +1,53 @@
+VFD Module - NandDevice03
+
++---------------+--------------------------------------------------------+
+| Class Name    | NandDevice03                                           |
++---------------+--------------------------------------------------------+
+| Flash Type    | NAND                                                   |
++---------------+--------------------------------------------------------+
+
++------------------------------------------------------------------------+
+| Features                                                               |
++---------------+--------------------------------------------------------+
+| I/O Counter   | Interface 'IVFD_COUNTER'                               |
+| I/O Latency   | Interface 'IVFD_LATENCY'                               |
+| Data Storage  | In Memory                                              |
++---------------+--------------------------------------------------------+
+
++---------------------------+
+| Used VFD_INFO				|
++-----------------------+---+
+| id					| -	|
+|						|	|
+| blockCount			| ¡Ì	|
+| pageCountPerBlock		| ¡Ì	|
+| pageSize				| ¡Ì	|
+| eraseLimitation		| ¡Ì	|
+|						|	|
+| readTime				| ¡Ì	|
+| programTime			| ¡Ì	|
+| eraseTime				| ¡Ì	|
++-----------------------+---+ ('-' means not necessary)
+
+Others:
+	¡¤ NandDevice03 stores the I/O counters and I/O total latencies.
+	¡¤ NandDevice03 simulates a NAND-type device.
+	¡¤ NandDevice03 use a batch of memories for data storage.
+	¡¤ NandDevice03 cannot read/write page or erase block when the corresponding block was physically broken.
+	¡¤ It's a signal of physically broken when the erase count of one block is larger than eraseLimitation.
+
+Exception List
+ ¡¤ Constructor/Destructor - None
+ ¡¤ QueryInterface
+	- RV_ERROR_UNSUPPORT_INTERFACE: The specified interface is not supported in NandDevice03.
+ ¡¤ GetReadCount/GetWriteCount/GetEraseCount - None
+ ¡¤ Initialize/Release - None
+ ¡¤ EraseBlock/ReadPage/WritePage
+	- RV_ERROR_FLASH_BLOCK_BROKEN: The block supposed to be erased is physically broken.
+
+Update History
+ - 2009-04-19: Minor revision.
+ - 2009-04-08: All codes get ready.
+ 
+Written by Su.Xuan@KDELab@USTC <sdbchina|mail.ustc.edu.cn>
+Lastest Update: 2009-04-19

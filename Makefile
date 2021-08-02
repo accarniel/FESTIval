@@ -13,9 +13,12 @@
 # **********************************************************************/
 
 POSTGIS_SOURCE=$(postgis)
-FLASHDBSIM_SOURCE=/home/pedro/Downloads/Flash-DBSim-for-Linux-1.0
+FLASHDBSIM_SOURCE=Flash-DBSim-for-Linux-1.0
 
 $(shell python3 gen_config_h.py $(POSTGIS_SOURCE)/postgis_config.h)
+$(info Compiling FlashDBSim...)
+$(shell make -s -C $(FLASHDBSIM_SOURCE)/)
+$(info Done.)
 
 MODULE_big=festival-1.1
 OBJS= \
