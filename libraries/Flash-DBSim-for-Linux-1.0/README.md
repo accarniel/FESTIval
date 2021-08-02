@@ -14,7 +14,7 @@ Please mention the applicability of the Flash-DBSim for Linux by citing one of t
 Flash-DBSim for Linux ports the flash simulator [Flash-DBSim](http://kdelab.ustc.edu.cn/flash-dbsim/index_en.html), originally implemented for Windows, to be used in Linux based systems.
 A flash simulator emulates in the memory the behavior of a flash memory. Thus, it consists of an interesting and promising environment to execute experiments, such as the evaluation of index structures using [FESTIval](https://accarniel.github.io/FESTIval/).
 
-Flash-DBSim for Linux also provides a C-API.
+Flash-DBSim for Linux also provides a C-API. It was originally developed in the following [github repository](https://github.com/accarniel/Flash-DBSim-for-Linux) and now it is fully integrated as a FESTIval library. This means that Flash-DBSim for Linux is maintained here now.
 
 # Compilation and Installation
 
