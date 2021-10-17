@@ -1,6 +1,6 @@
 # Contributing to FESTIval
 
-The project welcomes contributions from three different perspectives. You can contribute to FESTIval by making Pull Requests on [FESTIval GitHub Repo](https://github.com/accarniel/FESTIval). Alternately, contact Anderson Carniel by sending an email to <accarniel@gmail.com>. When a Pull Request or email is sent, Anderson Carniel will check it as soon as possible. 
+The project welcomes contributions from three different perspectives. You can contribute to FESTIval by making Pull Requests on [FESTIval GitHub Reposity](https://github.com/accarniel/FESTIval). Alternately, contact Anderson Carniel by sending an email to <accarniel@ufscar.br>. When a Pull Request or email is sent, Anderson Carniel will check it as soon as possible. 
 
 The following sections brief the workflow of how to complete a contribution according to the three types of perspectives.
 

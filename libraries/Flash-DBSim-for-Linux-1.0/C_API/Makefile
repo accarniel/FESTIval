@@ -1,7 +1,12 @@
-INCLUDES=./include
-BIN=./bin/*
-LIBRARY_PATH=../SO
-LIBRARY_BIN=../SO/bin/*
+#INCLUDES=./include
+#BIN=./bin/*
+#LIBRARY_PATH=../SO
+#LIBRARY_BIN=../SO/bin/*
+
+INCLUDES=$(wildcard ./include)
+BIN=$(wildcard ./bin/*)
+LIBRARY_PATH=$(wildcard ../SO)
+LIBRARY_BIN=$(wildcard ../SO/bin/*)
 
 $(shell mkdir -p bin)
 

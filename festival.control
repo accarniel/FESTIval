@@ -1,5 +1,5 @@
-#control festival extension - version 1.1
+#control festival extension - version 1.1.1
 comment = 'Spatial indexes designed for magnetic disks and flash devices.'
-default_version = '1.1'
-module_pathname='$libdir/festival-1.1'
+default_version = '1.1.1'
+module_pathname='$libdir/festival-1.1.1'
 relocatable = true

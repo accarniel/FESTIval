@@ -1,5 +1,5 @@
-INCLUDES=./include
-BIN=./bin/*
+INCLUDES=$(wildcard ./include)
+BIN=$(wildcard ./bin/*)
 
 $(shell mkdir -p bin)
 

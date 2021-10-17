@@ -12,15 +12,19 @@
 # *
 # **********************************************************************/
 
+ifndef postgis
+$(error The path of the PostGIS is not set. Please, inform the full path of the PostGIS's source code in the parameter 'postgis' (e.g., postgis=PATH))
+endif
+
 POSTGIS_SOURCE=$(postgis)
-FLASHDBSIM_SOURCE=$(realpath libraries/Flash-DBSim-for-Linux-1.0)
+FLASHDBSIM_SOURCE=$(wildcard ./libraries/Flash-DBSim-for-Linux-1.0)
 
 $(shell python3 gen_config_h.py $(POSTGIS_SOURCE)/postgis_config.h)
 $(info Compiling FlashDBSim...)
 $(shell make -s -C $(FLASHDBSIM_SOURCE)/)
 $(info Done.)
 
-MODULE_big=festival-1.1
+MODULE_big=festival-1.1.1
 OBJS= \
     main/bbox_handler.o \
     main/storage_handler.o \
@@ -71,9 +75,10 @@ OBJS= \
     postgres/festival_module.o \
     flashdbsim/flashdbsim.o
 EXTENSION = festival
-DATA = festival--1.1.sql
+DATA = festival--1.1.1.sql
 
-# support versions of PostGIS lesser than 3.0 only (because of lwgeom dependency)
+# support versions of PostGIS lesser than 3.0 only (more precisely, PostGIS >= 2.2 and <= 2.5) - this is due to the dependency of the lwgeom library
+# support versions of PosgreSQL >= 9.5
 SHLIB_LINK = $(POSTGIS_SOURCE)/libpgcommon/libpgcommon.a $(POSTGIS_SOURCE)/postgis/postgis-*.so $(FLASHDBSIM_SOURCE)/C_API/libflashdb_capi.so -L/usr/local/lib -lgeos_c -lrt -llwgeom
 
 PG_CPPFLAGS = -I/usr/local/include -I$(POSTGIS_SOURCE)/liblwgeom/ -I$(POSTGIS_SOURCE)/libpgcommon/ -I$(POSTGIS_SOURCE)/postgis/ -I$(FLASHDBSIM_SOURCE)/C_API/include/ -I/usr/include/ -fPIC

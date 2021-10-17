@@ -2,23 +2,19 @@ FESTIval is completely described in the following journal paper:
 
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. FESTIval: A versatile framework for conducting experimental evaluations of spatial indices. MethodsX, vol. 7, 2020, 100695, 2020.](https://www.sciencedirect.com/science/article/pii/S2215016119302717)
 
-The first prototype of FESTIval was published in:
+FESTIval has also been employed to evaluate techniques for **indexing spatial on flash-based Solid State Drives**:
 
-* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. Experimental Evaluation of Spatial Indices with FESTIval. In Proceedings of the Satellite Events of the 31st Brazilian Symposium on Databases (SBBD), p. 123–128, 2016.](https://www.researchgate.net/publication/310295040_Experimental_Evaluation_of_Spatial_Indices_with_FESTIval)
+* [Carniel, A. C.; Roumelis, G.; Ciferri, R. R.; Vassilakopoulos, M.; Corral, A.; Aguiar, C. D. Porting Disk-based Spatial Index Structures to Flash-based Solid State Drives. GeoInformatica, 2021 - *accepted for publication*.](files/accepted_manuscript_GeoInformatica2021.pdf)
 
-> This version only encompasses the implementation of the following disk-based spatial indices: the R-tree and the R*-tree.
+* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A generic and efficient framework for flash-aware spatial indexing. Information Systems, https://doi.org/10.1016/j.is.2018.09.004, 2018.](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899) 
+
+* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A Generic and Efficient Framework for Spatial Indexing on Flash-based Solid State Drives. In Proceedings of the 21st European Conference on Advances in Databases and Information Systems (ADBIS), p. 229-243, 2017.](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16)
 
 FESTIval has been used as the main tool to **understand the impact of SSDs on the spatial indexing context**, as described in:
 
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. The Performance Relation of Spatial Indexing on Hard Disk Drives and Solid State Drives. In Proceedings of the Brazilian Symposium on GeoInformatics, p. 263-174, 2016.](https://www.researchgate.net/publication/311258275_The_Performance_Relation_of_Spatial_Indexing_on_Hard_Disk_Drives_and_Solid_State_Drives)
 
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. Analyzing the Performance of Spatial Indices on Hard Disk Drives and Flash-based Solid State Drives. Journal of Information and Data Management 8 (1), p. 34-49, 2017.](https://seer.ufmg.br/index.php/jidm/article/view/4579)
-
-FESTIval has also been employed to **measure the performance of gains of eFIND**, a generic and efficient framework that transforms a disk-based spatial index into a flash-aware spatial index (e.g., transforms an R-tree to an eFIND R-tree). eFIND is described in:
-
-* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A generic and efficient framework for flash-aware spatial indexing. Information Systems, https://doi.org/10.1016/j.is.2018.09.004, 2018.](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899) 
-
-* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A Generic and Efficient Framework for Spatial Indexing on Flash-based Solid State Drives. In Proceedings of the 21st European Conference on Advances in Databases and Information Systems (ADBIS), p. 229-243, 2017.](https://link.springer.com/chapter/10.1007/978-3-319-66917-5_16)
 
 FESTIval also provides support for **flash simulators** (e.g., [FlashDBSim](http://kdelab.ustc.edu.cn/flash-dbsim/index_en.html)) when analyzing the performance of spatial indices, such as reported in:
 
@@ -34,3 +30,9 @@ Originally, FESTIval has been developed in the context of the **Ph.D. work** of 
 
 * [Carniel, A. C.; Ciferri, C. D. A. Spatial Indexing in Flash Memories: Proposal of an Efficient and Robust Spatial Index with Durability. In Proceedings of the Satellite Events of the 31st Brazilian Symposium on Databases (SBBD), p. 66-73, 2016.](http://sbbd2016.fpc.ufba.br/sbbd2016/wtdbd/wtdbd-2016_paper_8.pdf)
 * [Carniel, A. C. Spatial Indexing on Flash-based Solid State Drives. In Proceedings of the VLDB 2018 PhD Workshop, p. 1-4, 2018.](http://ceur-ws.org/Vol-2175/paper09.pdf)
+
+The first prototype of FESTIval was published in:
+
+* [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. Experimental Evaluation of Spatial Indices with FESTIval. In Proceedings of the Satellite Events of the 31st Brazilian Symposium on Databases (SBBD), p. 123–128, 2016.](https://www.researchgate.net/publication/310295040_Experimental_Evaluation_of_Spatial_Indices_with_FESTIval)
+
+> This version only encompasses the implementation of the following disk-based spatial indices: the R-tree and the R*-tree.

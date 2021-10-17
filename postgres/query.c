@@ -412,16 +412,7 @@ LWGEOM **retrieve_geoms_from_postgres(const Source *src, int *row_ids, int count
     geoms = (LWGEOM**) lwalloc(sizeof (LWGEOM*) * count);
 
     for (i = 0; i < count; i++) {
-
-#if FESTIVAL_PGSQL_VERSION == 95
-
-        bytea_ewkb = DatumGetByteaP(SPI_getbinval(SPI_tuptable->vals[i], SPI_tuptable->tupdesc, 1, &isnull));
-
-#elif FESTIVAL_PGSQL_VERSION >= 120
-
         bytea_ewkb = DatumGetByteaP(SPI_getbinval(SPI_tuptable->vals[i], SPI_tuptable->tupdesc, 1, (bool*) &isnull));
-
-#endif
         ewkb = (uint8_t*) VARDATA(bytea_ewkb);
 
         lwgeom = lwgeom_from_wkb(ewkb, VARSIZE(bytea_ewkb) - VARHDRSZ, LW_PARSER_CHECK_NONE);

@@ -15,7 +15,7 @@
 				<th>Source code</th>
 			</tr>	
 			<tr>
-				<td><a href="https://github.com/accarniel/FESTIval/archive/refs/tags/v1.1.0.tar.gz" target="_blank">FESTIval-v1.1</a></td>
+				<td><a href="https://github.com/accarniel/FESTIval/archive/refs/tags/v1.1.1.tar.gz" target="_blank">FESTIval-v1.1.1</a></td>
 				<td><a href="https://github.com/accarniel/FESTIval" target="_blank">Github Project</a></td>
 			</tr>
 		</table>
@@ -28,6 +28,12 @@ To cite FESTIval, please mention its following journal article:
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. FESTIval: A versatile framework for conducting experimental evaluations of spatial indices. MethodsX, vol. 7, 2020, 100695, 2020.](https://www.sciencedirect.com/science/article/pii/S2215016119302717)
 
 This article deeply describes FESTIval and its internal structures.
+
+## NEWS
+
+FESTIval was employed in a recent research article accepted for publication in the [GeoInformatica](https://www.springer.com/journal/10707). The accepted manuscript can be found below:
+
+[Carniel, A. C.; Roumelis, G.; Ciferri, R. R.; Vassilakopoulos, M.; Corral, A.; Aguiar, C. D. Porting Disk-based Spatial Index Structures to Flash-based Solid State Drives. GeoInformatica, 2021.](files/accepted_manuscript_GeoInformatica2021.pdf)
 
 ## Overview
 
@@ -67,4 +73,4 @@ Please make a Pull Request to add your work on the Publications page using FESTI
 
 This project was supported by grant #2015/26687-8, São Paulo Research Foundation (FAPESP) in Brazil (2015-2018). FESTIval is mantained and developed by [Anderson Chaves Carniel](https://accarniel.github.io/). 
 
-Research conducted at the University of São Paulo and the Federal University of Technology - Paraná in Brazil.
+Research conducted at the Federal University of São Carlos, Brazil. Its development was started at the University of São Paulo and the Federal University of Technology - Paraná, Brazil.

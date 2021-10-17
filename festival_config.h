@@ -8,12 +8,12 @@
 #define FESTIVAL_GDAL_VERSION 30
 
 /* GEOS library version */
-#define FESTIVAL_GEOS_VERSION 39
+#define FESTIVAL_GEOS_VERSION 38
 
 /* PostGIS version */
-#define FESTIVAL_POSTGIS_VERSION 312
+#define FESTIVAL_POSTGIS_VERSION 255
 
 /* PostgreSQL server version */
-#define FESTIVAL_PGSQL_VERSION 120
+#define FESTIVAL_PGSQL_VERSION 110
 
 #endif /* FESTIVAL_CONFIG_H */
