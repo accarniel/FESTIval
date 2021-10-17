@@ -3,7 +3,7 @@
 ## Minor changes
 
 * Some improvements in the Makefile.
-* Improvements of the compatility between FESTIval and PostgreSQL/PostGIS.
+* Improvements of the compatibility between FESTIval and PostgreSQL/PostGIS.
 * Updates in the documentation of the FESTIval to better describe the installation guide.
 
 # FESTIval 1.1.0
