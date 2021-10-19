@@ -29,7 +29,7 @@ To cite FESTIval, please mention its following journal article:
 
 This article deeply describes FESTIval and its internal structures.
 
-## NEWS
+## News
 
 FESTIval was employed in a recent research article accepted for publication in the [GeoInformatica](https://www.springer.com/journal/10707). The accepted manuscript can be found below:
 
