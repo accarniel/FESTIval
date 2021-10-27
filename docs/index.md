@@ -33,7 +33,7 @@ This article deeply describes FESTIval and its internal structures.
 
 FESTIval was employed in a recent research article accepted for publication in the [GeoInformatica](https://www.springer.com/journal/10707). The accepted manuscript can be found below:
 
-[Carniel, A. C.; Roumelis, G.; Ciferri, R. R.; Vassilakopoulos, M.; Corral, A.; Aguiar, C. D. Porting Disk-based Spatial Index Structures to Flash-based Solid State Drives. GeoInformatica, 2021.](files/accepted_manuscript_GeoInformatica2021.pdf)
+[Carniel, A. C.; Roumelis, G.; Ciferri, R. R.; Vassilakopoulos, M.; Corral, A.; Aguiar, C. D. Porting Disk-based Spatial Index Structures to Flash-based Solid State Drives. GeoInformatica, 2021.](https://accarniel.github.io/papers/accepted_manuscript_GeoInformatica2021.pdf)
 
 ## Overview
 

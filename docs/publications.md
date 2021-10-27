@@ -4,7 +4,7 @@ FESTIval is completely described in the following journal paper:
 
 FESTIval has also been employed to evaluate techniques for **indexing spatial on flash-based Solid State Drives**:
 
-* [Carniel, A. C.; Roumelis, G.; Ciferri, R. R.; Vassilakopoulos, M.; Corral, A.; Aguiar, C. D. Porting Disk-based Spatial Index Structures to Flash-based Solid State Drives. GeoInformatica, 2021 - *accepted for publication*.](files/accepted_manuscript_GeoInformatica2021.pdf)
+* [Carniel, A. C.; Roumelis, G.; Ciferri, R. R.; Vassilakopoulos, M.; Corral, A.; Aguiar, C. D. Porting Disk-based Spatial Index Structures to Flash-based Solid State Drives. GeoInformatica, 2021 - *accepted for publication*.](https://accarniel.github.io/papers/accepted_manuscript_GeoInformatica2021.pdf)
 
 * [Carniel, A. C.; Ciferri, R. R.; Ciferri, C. D. A. A generic and efficient framework for flash-aware spatial indexing. Information Systems, https://doi.org/10.1016/j.is.2018.09.004, 2018.](https://www.sciencedirect.com/science/article/abs/pii/S0306437918300899) 
 
