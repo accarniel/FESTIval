@@ -17,6 +17,7 @@
 #include <libgen.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <float.h>
 
 #include "statistical_processing.h"
 #include "bbox_handler.h"
