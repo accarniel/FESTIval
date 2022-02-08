@@ -12,9 +12,9 @@
 # *
 # **********************************************************************/
 
-ifndef postgis
-$(error The path of the PostGIS is not set. Please, inform the full path of the PostGIS's source code in the parameter 'postgis' (e.g., postgis=PATH))
-endif
+#ifndef postgis
+#$(error The path of the PostGIS is not set. Please, inform the full path of the PostGIS's source code in the parameter 'postgis' (e.g., postgis=PATH))
+#endif
 
 POSTGIS_SOURCE=$(postgis)
 FLASHDBSIM_SOURCE=$(wildcard ./libraries/Flash-DBSim-for-Linux-1.0)
