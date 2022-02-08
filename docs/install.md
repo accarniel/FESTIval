@@ -22,8 +22,7 @@ The dependencies of FESTIval are:
 In the terminal at the directory of the source code of FESTIval:
 
 ```
-make postgis=/PATH/TO/YOUR/POSTGIS_SOURCE_CODE
-sudo make install
+sudo make install postgis=/PATH/TO/YOUR/POSTGIS_SOURCE_CODE
 ```
 
 !!! note
@@ -54,9 +53,13 @@ DROP EXTENSION festival;
 !!! danger
 	Be careful before dropping a table. Disabling FESTIval will also delete its data schema, including their stored data!
 
-FESTIval also provides a set of files that contain default values for relational tables of **fds**. It is available in the directory called **default-values**. After extracting the file *default-values-files.tar.xz*, you will be able to execute the *festival-inserts.sql* as follows. 
+FESTIval also provides a set of files that contain default values for relational tables of **fds**. It is available in the directory called **default-values**. The commands below shows the extraction of the file *default-values-files.tar.xz* and the execution of the script *festival-inserts.sql*. 
 
 ```
+# in the root directory of FESTIval's source code
+cd default-values/
+tar -xvf default-values-files.tar.xz
+cd ..
 psql -U user -d database -vfestivaldir=/f_path/ -f /f_path/festival-inserts.sql
 ```
 
