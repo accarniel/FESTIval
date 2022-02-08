@@ -12,12 +12,13 @@
 # *
 # **********************************************************************/
 
-#ifndef postgis
-#$(error The path of the PostGIS is not set. Please, inform the full path of the PostGIS's source code in the parameter 'postgis' (e.g., postgis=PATH))
-#endif
+ifndef postgis
+$(error The path of the PostGIS is not set. Please, inform the full path of the PostGIS's source code in the parameter 'postgis' (e.g., postgis=PATH))
+endif
 
 POSTGIS_SOURCE=$(postgis)
-FLASHDBSIM_SOURCE=$(wildcard ./libraries/Flash-DBSim-for-Linux-1.0)
+LOCAL_FLASHDBSIM=/libraries/Flash-DBSim-for-Linux-1.0
+FLASHDBSIM_SOURCE=$(shell pwd)$(LOCAL_FLASHDBSIM)
 
 $(shell python3 gen_config_h.py $(POSTGIS_SOURCE)/postgis_config.h)
 $(info Compiling FlashDBSim...)
